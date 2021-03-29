@@ -59,9 +59,5 @@ Label3:
     MsgBox "ƒLƒƒƒ“ƒZƒ‹‚³‚ê‚Ü‚µ‚½"
 
 Label4:
-
-
-            
-
     
 End Sub

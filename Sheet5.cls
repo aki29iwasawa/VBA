@@ -125,6 +125,7 @@ End Sub
 
 
 Sub CateAutoFilter()
+'きちんと動かないので、明日作り直す
 
     '検索結果を表示するB1からをクリア
     Range("B13:C" & Rows.Count).Clear

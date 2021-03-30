@@ -19,7 +19,7 @@ Sub deletePMethod()
 'キャンセルされたらエラー処理
     On Error GoTo myErr
         
-    Dim delRng As Range
+    Dim delRng As range
     Set delRng = selectData()
     
     delRng.Select
@@ -47,9 +47,9 @@ Sub deletePMethod()
             result1 = MsgBox("決済方法から" & RngVal & "を削除しますか？" & vbCrLf & "※" & RngVal & "に属する詳細も全て削除されます", vbYesNo)
             If result1 = vbYes Then
                 'B列を削除
-                Dim ColumnB As Range, LastB As Long
-                Set ColumnB = Range("B10")
-                LastB = Range("B10").End(xlDown).Row
+                Dim ColumnB As range, LastB As Long
+                Set ColumnB = range("B10")
+                LastB = range("B10").End(xlDown).Row
 
                 Dim i As Long
                 For i = 10 To LastB
@@ -93,7 +93,7 @@ Sub deletePMethod()
                 'DH列を削除
                 '対象の最終行取得
                 Dim LastDE As Long
-                LastDE = Worksheets("決済方法").Range("D10").End(xlDown).Row
+                LastDE = Worksheets("決済方法").range("D10").End(xlDown).Row
                 
                 Dim j As Long
                 '10行目からDEの最終行まで繰り返し
@@ -118,7 +118,7 @@ Label1:
             Dim result2 As Long
             result2 = MsgBox(Meth & "に属する" & RngVal & "を削除しますか？", vbYesNo)
             If result2 = vbYes Then
-                Range(Cells(RngRow, (RngColumn - 1)), Cells(RngRow, RngColumn)).Delete xlShiftUp
+                range(Cells(RngRow, (RngColumn - 1)), Cells(RngRow, RngColumn)).Delete xlShiftUp
                 GoTo Label2
             Else
                 GoTo Label3

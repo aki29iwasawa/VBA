@@ -21,20 +21,20 @@ Sub graph()
 
 'カテゴリごとの合計支出表を作成
     Dim PSum, AllRow As Long
-    Dim CCol, ExCol As Range
+    Dim CCol, ExCol As range
     Dim Cate As String
     
     '支出の最終行を取得
-    AllRow = Worksheets("支出").Range("C9").End(xlDown).Row
+    AllRow = Worksheets("支出").range("C9").End(xlDown).Row
     
     '費目列を9行目から最終行までセット
-    Set CCol = Worksheets("支出").Range("C9:C" & AllRow)
+    Set CCol = Worksheets("支出").range("C9:C" & AllRow)
     '支出額の列を9行目から最終行までセット
-    Set ExCol = Worksheets("支出").Range("I9:I" & AllRow)
+    Set ExCol = Worksheets("支出").range("I9:I" & AllRow)
     
     '「カテゴリ」最終行を取得
     Dim CateRowCnt As Long
-    CateRowCnt = Worksheets("支出カテゴリ").Range("E10").End(xlDown).Row
+    CateRowCnt = Worksheets("支出カテゴリ").range("E10").End(xlDown).Row
         
     '
     Dim i As Long
@@ -54,19 +54,19 @@ Sub graph()
             .Cells(i, 3).Value = PSum
         End With
         '追加した行のデザインを整える
-        Call RowDesign(Range(Cells(i, 2), Cells(i, 3)))
+        Call RowDesign(range(Cells(i, 2), Cells(i, 3)))
     Next i
 
 'グラフ上記の表を使ってグラフを作成
     Dim trgtSh As Worksheet
     Set trgtSh = ThisWorkbook.Worksheets("グラフ")
     
-    Dim dataRng As Range
-    Set dataRng = Range(Cells(10, 2), Cells(CateRowCnt, 3))
+    Dim dataRng As range
+    Set dataRng = range(Cells(10, 2), Cells(CateRowCnt, 3))
     
     '貼り付けたいセルを定義
-    Dim pasteRng As Range
-    Set pasteRng = trgtSh.Range("E4")
+    Dim pasteRng As range
+    Set pasteRng = trgtSh.range("E4")
      
     'グラフ作成
     With trgtSh.Shapes.AddChart.Chart

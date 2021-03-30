@@ -20,7 +20,7 @@ Sub deleteCatergory()
     On Error GoTo myErr
 
     '標準モジュールを呼び出す
-    Dim delRng As Range
+    Dim delRng As range
 'ワークシートを渡す
 '    Dim sheet As Worksheet
 '    Set sheet = Sheets("支出カテゴリ")
@@ -52,9 +52,9 @@ Sub deleteCatergory()
             result1 = MsgBox("費目1から" & RngVal & "を削除しますか？" & vbCrLf & "※" & RngVal & "に属する費目2も全て削除されます", vbYesNo)
             If result1 = vbYes Then
                 'E列を削除
-                Dim ColumnE As Range, LastE As Long
-                Set ColumnE = Range("E10")
-                LastE = Range("E10").End(xlDown).Row
+                Dim ColumnE As range, LastE As Long
+                Set ColumnE = range("E10")
+                LastE = range("E10").End(xlDown).Row
 
                 Dim i As Long
                 For i = 10 To LastE
@@ -69,7 +69,7 @@ Sub deleteCatergory()
                 'GH列を削除
                 '対象の最終行取得
                 Dim LastGH As Long
-                LastGH = Worksheets("支出カテゴリ").Range("G10").End(xlDown).Row
+                LastGH = Worksheets("支出カテゴリ").range("G10").End(xlDown).Row
                 
                 Dim j As Long
                 '10行目からDEの最終行まで繰り返し
@@ -97,7 +97,7 @@ Label1:
             result2 = MsgBox(Cate & "に属する" & RngVal & "を削除しますか？", vbYesNo)
             
             If result2 = vbYes Then
-                Range(Cells(RngRow, (RngColumn - 1)), Cells(RngRow, RngColumn)).Delete xlShiftUp
+                range(Cells(RngRow, (RngColumn - 1)), Cells(RngRow, RngColumn)).Delete xlShiftUp
                 GoTo Label2
             Else
                 GoTo Label3
@@ -128,20 +128,20 @@ Sub CateAutoFilter()
 'きちんと動かないので、明日作り直す
 
     '検索結果を表示するB1からをクリア
-    Range("B13:C" & Rows.Count).Clear
+    range("B13:C" & Rows.Count).Clear
     
     With Sheets("支出カテゴリ")
         'G10からの１列目をC9で絞り込み
-        .Range("H9").AutoFilter Field:=1, Criteria1:="*" & Range("C9").Value & "*"
+        .range("G9").AutoFilter Field:=1, Criteria1:="*" & range("C9").Value & "*"
         'コピー
-        .Range("G9").CurrentRegion.Copy
-        .Range("B13").PasteSpecial Paste:=xlPasteAll
+        .range("G9").CurrentRegion.Copy
+        .range("B13").PasteSpecial Paste:=xlPasteAll
         'オートフィルタを解除
         .AutoFilterMode = False
     End With
     
     Application.CutCopyMode = False
-    Range("A1").Select
+    range("A1").Select
     
 End Sub
 

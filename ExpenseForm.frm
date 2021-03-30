@@ -26,7 +26,7 @@ Private Sub addExpense_Click()
     NewRow = Worksheets("支出").Cells(Rows.Count, 2).End(xlUp).Row + 1
     
     'データ入力行のデザインを変更
-    Call RowDesign(Range(Cells(NewRow, 2), Cells(NewRow, 12)))
+    Call RowDesign(range(Cells(NewRow, 2), Cells(NewRow, 12)))
     
     Cells(NewRow, 2).Value = BDate
     Cells(NewRow, 3).Value = ECatergory
@@ -84,10 +84,10 @@ End Sub
 Private Sub UserForm_Initialize()
 
     'カテゴリ欄が空白でなければ順に取得、選択肢に追加
-    If Worksheets("支出カテゴリ").Range("E10") <> "" Then
+    If Worksheets("支出カテゴリ").range("E10") <> "" Then
         '「カテゴリ」最終行を取得
         Dim CateRowCnt As Long
-        CateRowCnt = Worksheets("支出カテゴリ").Range("E10").End(xlDown).Row
+        CateRowCnt = Worksheets("支出カテゴリ").range("E10").End(xlDown).Row
         
         '「カテゴリ」一覧を費目１に入れる
         Dim i As Long, Cate As String
@@ -101,10 +101,10 @@ Private Sub UserForm_Initialize()
     Me.BDate.Value = Date
 
     '決済方法欄が空白でなければ順に取得、選択肢に追加
-    If Worksheets("決済方法").Range("B10") <> "" Then
+    If Worksheets("決済方法").range("B10") <> "" Then
         '「決済方法」最終行を取得
         Dim MethodRowCnt As Long
-        MethodRowCnt = Worksheets("決済方法").Range("B10").End(xlDown).Row
+        MethodRowCnt = Worksheets("決済方法").range("B10").End(xlDown).Row
         
         '「決済方法」一覧を費目１に入れる
         Dim j As Long, Method As String
@@ -127,23 +127,23 @@ Private Sub ECatergory_Change()
     
     With Worksheets("支出カテゴリ")
         '検索結果を表示するB1からをクリア
-        .Range("B14:C" & Rows.Count).Clear
+        .range("B14:C" & Rows.Count).Clear
 
         '費目1で選択されたものでオートフィルター
-        .Range("G9").AutoFilter Field:=1, Criteria1:="*" & Cate & "*"
+        .range("G9").AutoFilter Field:=1, Criteria1:="*" & Cate & "*"
         'コピぺ
-        .Range("G9").CurrentRegion.Copy
-        .Range("B13").PasteSpecial Paste:=xlPasteAll
+        .range("G9").CurrentRegion.Copy
+        .range("B13").PasteSpecial Paste:=xlPasteAll
         'オートフィルター解除
-        .Range("G9").AutoFilter
+        .range("G9").AutoFilter
 
     End With
     
     'カテゴリ欄が空白でなければ順に取得、選択肢に追加
-    If Worksheets("支出カテゴリ").Range("C14") <> "" Then
+    If Worksheets("支出カテゴリ").range("C14") <> "" Then
         '「カテゴリ」最終行を取得
         Dim CateRowCnt As Long
-        CateRowCnt = Worksheets("支出カテゴリ").Range("C13").End(xlDown).Row
+        CateRowCnt = Worksheets("支出カテゴリ").range("C13").End(xlDown).Row
         
 '        MsgBox CateRowCnt
       
@@ -157,7 +157,7 @@ Private Sub ECatergory_Change()
     End If
     
     '検索結果を表示するB1からをクリア
-    Worksheets("支出カテゴリ").Range("B14:C" & Rows.Count).Clear
+    Worksheets("支出カテゴリ").range("B14:C" & Rows.Count).Clear
 
     Application.CutCopyMode = False
     
@@ -177,20 +177,20 @@ Private Sub PMethod_Change()
 '        .Range("B14:C" & Rows.Count).Clear
 
         '決済方法で選択されたものでオートフィルター
-        .Range("D9").AutoFilter Field:=1, Criteria1:="*" & Meth & "*"
+        .range("D9").AutoFilter Field:=1, Criteria1:="*" & Meth & "*"
         'コピぺ
-        .Range("D9").CurrentRegion.Copy
-        .Range("G9").PasteSpecial Paste:=xlPasteAll
+        .range("D9").CurrentRegion.Copy
+        .range("G9").PasteSpecial Paste:=xlPasteAll
         'オートフィルター解除
-        .Range("D9").AutoFilter
+        .range("D9").AutoFilter
 
     End With
     
     '詳細欄が空白でなければ順に取得、選択肢に追加
-    If Worksheets("決済方法").Range("H10") <> "" Then
+    If Worksheets("決済方法").range("H10") <> "" Then
         '決済方法最終行を取得
         Dim MethRowCnt As Long
-        MethRowCnt = Worksheets("決済方法").Range("H9").End(xlDown).Row
+        MethRowCnt = Worksheets("決済方法").range("H9").End(xlDown).Row
         
         '「決済方法」一覧を詳細に入れる
         Dim i As Long, Det As String
@@ -202,7 +202,7 @@ Private Sub PMethod_Change()
     End If
     
     'オートフィルターの結果をペーストしたセルをクリア
-    Worksheets("決済方法").Range("G9:H" & Rows.Count).Clear
+    Worksheets("決済方法").range("G9:H" & Rows.Count).Clear
     
     Application.CutCopyMode = False
         

@@ -33,8 +33,8 @@ Private Sub addCatergory_Click()
         NewRowSub = Worksheets("支出カテゴリ").Cells(Rows.Count, 8).End(xlUp).Row + 1
             
         'カテゴリ登録されていない費目１が入力された場合、登録する
-        Dim Cate1 As Range
-        Set Cate1 = Worksheets("支出カテゴリ").Range(Cells(10, 5), Cells(NewRow, 5)).Find(What:=ECatergory, LookIn:=xlValues, LookAt:=xlWhole, MatchCase:=True)
+        Dim Cate1 As range
+        Set Cate1 = Worksheets("支出カテゴリ").range(Cells(10, 5), Cells(NewRow, 5)).Find(What:=ECatergory, LookIn:=xlValues, LookAt:=xlWhole, MatchCase:=True)
         
         If Cate1 Is Nothing Then
         '新規費目１と２を登録
@@ -48,7 +48,7 @@ Private Sub addCatergory_Click()
             Cells(NewRowSub, 8).Value = ESubcatergory
             
             'データ入力行のデザインを変更
-            Call RowDesign(Range(Cells(NewRowSub, 7), Cells(NewRowSub, 8)))
+            Call RowDesign(range(Cells(NewRowSub, 7), Cells(NewRowSub, 8)))
           
         ElseIf Not Cate1 Is Nothing And ESubcatergory = "" Then
         '入力された費目１が既に存在し、かつ、費目２の入力がない場合
@@ -57,15 +57,15 @@ Private Sub addCatergory_Click()
         ElseIf Not Cate1 Is Nothing Then
         '費目１が既に存在する場合
         '費目２の存在チェック
-            Dim Cate2 As Range
-            Set Cate2 = Worksheets("支出カテゴリ").Range(Cells(10, 8), Cells(NewRowSub, 8)).Find(What:=ESubcatergory, LookIn:=xlValues, LookAt:=xlWhole, MatchCase:=True)
+            Dim Cate2 As range
+            Set Cate2 = Worksheets("支出カテゴリ").range(Cells(10, 8), Cells(NewRowSub, 8)).Find(What:=ESubcatergory, LookIn:=xlValues, LookAt:=xlWhole, MatchCase:=True)
             
             If Cate2 Is Nothing Then
                 '既存データが存在しない場合は入力
                 Cells(NewRowSub, 7).Value = ECatergory
                 Cells(NewRowSub, 8).Value = ESubcatergory
                 'データ入力行のデザインを変更
-                Call RowDesign(Range(Cells(NewRowSub, 7), Cells(NewRowSub, 8)))
+                Call RowDesign(range(Cells(NewRowSub, 7), Cells(NewRowSub, 8)))
         
             ElseIf Not Cate2 Is Nothing Then
                 '既存の費目２の検索findnextを使ってみる
@@ -93,10 +93,10 @@ Private Sub UserForm_Initialize()
 'フォームの初期設定
 
     'カテゴリ欄が空白でなければ順に取得、選択肢に追加
-    If Worksheets("支出カテゴリ").Range("E10") <> "" Then
+    If Worksheets("支出カテゴリ").range("E10") <> "" Then
         '「カテゴリ」最終行を取得
         Dim CateRowCnt As Long
-        CateRowCnt = Worksheets("支出カテゴリ").Range("E10").End(xlDown).Row
+        CateRowCnt = Worksheets("支出カテゴリ").range("E10").End(xlDown).Row
         
         '「カテゴリ」一覧を費目１に入れる
         Dim i As Long, Cate As String

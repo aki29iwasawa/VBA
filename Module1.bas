@@ -50,7 +50,9 @@ Sub ColDesign(range)
         .Interior.ThemeColor = msoThemeColorAccent5
         .Interior.TintAndShade = 0.4
         .Borders(xlEdgeTop).LineStyle = xlContinuous
-        .Borders(xlEdgeTop).Color = RGB(47, 117, 181)
+        .Borders(xlEdgeTop).ThemeColor = msoThemeColorAccent1
+'        .Borders(xlEdgeTop).TintAndShade = 0.4
+        .Borders(xlEdgeTop).Weight = xlMedium
     End With
         
 End Sub
